@@ -11,9 +11,34 @@ async function loadLang(lang){
 }
 if(select){const saved=localStorage.getItem('waposLang')||defaultLang; select.value=saved; loadLang(saved); select.addEventListener('change',e=>loadLang(e.target.value));}
 
-/* Intro (first visit only) */
-const intro=document.querySelector('.intro');
-if(intro){ if(localStorage.getItem('waposIntroSeen')) intro.classList.add('hide'); else setTimeout(()=>{intro.classList.add('hide');localStorage.setItem('waposIntroSeen','1')},3000); }
+/* Splash (first visit, replayed once per week) */
+(function(){
+  const splash=document.querySelector('[data-splash]');
+  if(!splash) return;
+  const mark=splash.querySelector('.splash-mark');
+  const SPLASH_KEY='waposSplashSeen';
+  const WEEK_MS=7*24*60*60*1000;
+  const lastSeen=Number(localStorage.getItem(SPLASH_KEY)||0);
+  const shouldShow=(Date.now()-lastSeen)>WEEK_MS;
+
+  function reveal(){
+    splash.classList.add('hide');
+    localStorage.setItem(SPLASH_KEY,String(Date.now()));
+  }
+
+  if(!shouldShow){ splash.classList.add('hide'); return; }
+
+  if(reducedMotion){ reveal(); return; }
+
+  if(mark){ mark.addEventListener('animationend',reveal,{once:true}); }
+  else{ setTimeout(reveal,3600); }
+
+  splash.addEventListener('click',()=>{
+    if(splash.classList.contains('hide')) return;
+    splash.classList.add('skip');
+    setTimeout(reveal,300);
+  });
+})();
 
 /* Header solidifies on scroll */
 const header=document.querySelector('.site-header');

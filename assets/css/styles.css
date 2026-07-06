@@ -247,20 +247,24 @@ a:focus-visible,button:focus-visible,.lang-select:focus-visible,.menu-toggle:foc
   text-align:center;letter-spacing:.2em;font-size:10px;text-transform:uppercase;
   color:rgba(169,152,120,.7);}
 
-/* ————— Intro ————— */
-.intro{position:fixed;z-index:100;inset:0;background:var(--noir);display:grid;
-  place-items:center;transition:opacity .9s var(--ease),visibility .9s;}
-.intro.hide{opacity:0;visibility:hidden}
-.intro-box{text-align:center}
-.intro-mark{font-family:"Cormorant Garamond",Georgia,serif;font-weight:400;
-  font-size:clamp(46px,8vw,102px);letter-spacing:.5em;margin-right:-.5em;
-  color:var(--champagne);opacity:0;animation:introIn 1.4s var(--ease) .2s forwards;}
-.intro-rule{width:0;height:1px;background:var(--gold);margin:26px auto 22px;
-  animation:ruleIn 1.1s var(--ease) 1s forwards;}
-.intro-tag{letter-spacing:.34em;text-transform:uppercase;color:var(--muted);
-  font-size:11px;opacity:0;animation:introIn 1.2s var(--ease) 1.3s forwards;}
-@keyframes introIn{to{opacity:1}}
-@keyframes ruleIn{to{width:min(300px,60vw)}}
+/* ————— Splash (first visit, replayed weekly) ————— */
+.splash{position:fixed;z-index:100;inset:0;background:#060504;display:grid;
+  place-items:center;cursor:pointer;
+  transition:opacity .35s var(--ease),visibility .35s;}
+.splash.hide{opacity:0;visibility:hidden}
+.splash-mark{font-family:"Cormorant Garamond",Georgia,serif;font-weight:400;
+  font-size:clamp(64px,16vw,120px);letter-spacing:.5em;margin-right:-.5em;
+  color:var(--gold);opacity:0;transform:scale(1);
+  text-shadow:0 0 40px rgba(199,164,106,.45),0 0 80px rgba(199,164,106,.25);
+  animation:splashSequence 3.6s forwards;}
+@keyframes splashSequence{
+  0%{opacity:0;transform:scale(1);animation-timing-function:ease-out;}
+  22.22%{opacity:1;transform:scale(1.3);animation-timing-function:linear;}
+  72.22%{opacity:1;transform:scale(1.3);animation-timing-function:ease-in;}
+  100%{opacity:0;transform:scale(1.3);}
+}
+.splash.skip .splash-mark{animation:none;opacity:0;transform:scale(1.3);
+  transition:opacity .3s ease-in;}
 
 /* ————— Reveal on scroll ————— */
 .reveal{opacity:0;transform:translateY(26px);
@@ -273,6 +277,7 @@ a:focus-visible,button:focus-visible,.lang-select:focus-visible,.menu-toggle:foc
   .reveal,.cards .card,.pillars .pillar{opacity:1;transform:none}
   .hero-bg{transform:none}
   body{opacity:1}
+  .splash-mark{opacity:1;transform:scale(1.3)}
 }
 
 /* ————— Responsive: tablet ————— */
