@@ -187,3 +187,33 @@ document.addEventListener('click',function(e){
   document.body.classList.add('page-exit');
   setTimeout(()=>{ window.location.href=href; },280);
 });
+
+/* El Hombre cinematic sequence — CSS keyframes/transitions do the visuals,
+   this only advances a data-phase attribute on a timer. */
+(function(){
+  const stage=document.querySelector('[data-hombre-stage]');
+  if(!stage) return;
+  if(reducedMotion) return; /* static hombre-group-8 frame per CSS reduced-motion rules */
+
+  const T={a:4000,b:2500,c:3500,d:2500};
+  function cycle(){
+    stage.dataset.phase='a';
+    setTimeout(()=>{
+      stage.dataset.phase='b';
+      setTimeout(()=>{
+        stage.dataset.phase='c';
+        setTimeout(()=>{
+          stage.dataset.phase='d';
+          setTimeout(cycle,T.d);
+        },T.c);
+      },T.b);
+    },T.a);
+  }
+
+  if('IntersectionObserver' in window){
+    const io=new IntersectionObserver(entries=>{
+      entries.forEach(en=>{ if(en.isIntersecting){ cycle(); io.unobserve(en.target); } });
+    },{threshold:.3});
+    io.observe(stage);
+  }else{ cycle(); }
+})();

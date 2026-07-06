@@ -191,6 +191,26 @@ section{padding:140px 0}
 .cards .card:nth-child(3),.pillars .pillar:nth-child(3){transition-delay:180ms}
 .cards .card:nth-child(4){transition-delay:270ms}
 
+/* ————— El Hombre cinematic sequence ————— */
+.eyebrow.centered{justify-content:center;margin:0 auto 20px}
+.el-hombre .section-head p{margin-top:-6px}
+.hombre-stage{position:relative;width:100%;aspect-ratio:16/9;max-height:760px;
+  background:#000;overflow:hidden;}
+.hombre-layer{position:absolute;inset:0;opacity:0;transition:opacity 1.2s var(--ease);}
+.hombre-layer img{width:100%;height:100%;object-fit:cover;
+  filter:saturate(1) contrast(1.05) brightness(.95);}
+.hombre-stage[data-phase="a"] .layer-a{opacity:1}
+.hombre-stage[data-phase="b"] .layer-b{opacity:1}
+.hombre-stage[data-phase="c"] .layer-c{opacity:1}
+.hombre-stage[data-phase="d"] .layer-d{opacity:1}
+.hombre-sweep{position:absolute;top:0;bottom:0;left:-35%;width:20%;
+  background:linear-gradient(100deg,transparent 0%,rgba(199,164,106,.4) 45%,rgba(231,211,172,.6) 50%,rgba(199,164,106,.4) 55%,transparent 100%);
+  opacity:0;pointer-events:none;}
+.hombre-stage[data-phase="a"] .sweep-a{animation:hombreSweepA 4s var(--ease) 1;}
+.hombre-stage[data-phase="c"] .sweep-c{animation:hombreSweepC 3.5s var(--ease) 1;}
+@keyframes hombreSweepA{0%{opacity:0;left:-35%}10%{opacity:1}88%{opacity:1}100%{opacity:0;left:115%}}
+@keyframes hombreSweepC{0%{opacity:0;left:-35%}12%{opacity:1}88%{opacity:1}100%{opacity:0;left:115%}}
+
 /* ————— Editorial split ————— */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);align-items:center}
 .panel{padding:0}
@@ -278,6 +298,8 @@ a:focus-visible,button:focus-visible,.lang-select:focus-visible,.menu-toggle:foc
   .hero-bg{transform:none}
   body{opacity:1}
   .splash-mark{opacity:1;transform:scale(1.3)}
+  .hombre-stage .layer-a{opacity:1!important}
+  .hombre-stage .layer-b,.hombre-stage .layer-c,.hombre-stage .layer-d,.hombre-sweep{opacity:0!important;display:none}
 }
 
 /* ————— Responsive: tablet ————— */
