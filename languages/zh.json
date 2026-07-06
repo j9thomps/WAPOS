@@ -9,7 +9,7 @@
   "nav.contact": "联系",
   "hero.eyebrow": "WAPOS Group",
   "hero.title": "男性风格、健康与欲望的奢华世界。",
-  "hero.text": "WAPOS 是一个当代奢华联盟，将时尚、健康、社群与配送融合为一个精致男性体验的独特生态系统。WAPOS 为深具品味的现代男士而生，以精准、性感与精工细作贯穿每一个接触点，展现独到的编辑美学。从精心臻选的服饰到私密的社交空间，每一种表达都折射出一种理念——美学的严谨与人性的连结在此交汇，成就一种由卓越执行力与细节完整性所定义的体验。",
+  "hero.text": "一个融合时尚、健康、社群与配送的当代奢华联盟——为深具品味的现代男士而生。",
   "cta.explore": "探索品牌",
   "cta.contact": "联系",
   "home.brands.title": "品牌组合",
@@ -53,5 +53,11 @@
   "m69.videos.title": "Male69 动态影像",
   "m69.videos.text": "来自社交平台社区的宣传与内容。",
   "hombre.title": "型男",
-  "hombre.caption": "现代男士，以气场与精准定义自我。"
+  "hombre.caption": "现代男士，以气场与精准定义自我。",
+  "renxo.title": "RENXO",
+  "renxo.subtitle": "态度时尚",
+  "renxo.p1": "Prêt-à-porter",
+  "renxo.p2": "配饰",
+  "renxo.p3": "限量版",
+  "renxo.explore": "探索"
 }

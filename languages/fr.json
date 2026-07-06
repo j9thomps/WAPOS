@@ -9,7 +9,7 @@
   "nav.contact": "Contact",
   "hero.eyebrow": "WAPOS Group",
   "hero.title": "Un univers masculin de style, de bien-être et de désir.",
-  "hero.text": "WAPOS est un collectif de luxe contemporain qui unit mode, bien-être, communauté et distribution en un écosystème singulier d'expérience masculine raffinée. Conçu pour l'homme moderne et exigeant, WAPOS incarne une sensibilité éditoriale fondée sur la précision, la sensualité et un artisanat méticuleux à chaque point de contact. Chaque expression — du vêtement soigneusement sélectionné aux espaces sociaux les plus intimes — reflète une philosophie où la rigueur esthétique et la connexion humaine convergent, offrant une expérience définie par le calibre de son exécution et l'intégrité de ses détails.",
+  "hero.text": "Un collectif de luxe contemporain qui unit mode, bien-être, communauté et distribution — conçu pour l'homme moderne et exigeant.",
   "cta.explore": "Explorer les marques",
   "cta.contact": "Contact",
   "home.brands.title": "Portefeuille de marques",
@@ -53,5 +53,11 @@
   "m69.videos.title": "Male69 en mouvement",
   "m69.videos.text": "Campagnes et contenus de notre communauté sur les réseaux.",
   "hombre.title": "L'Homme",
-  "hombre.caption": "L'homme moderne, défini par la présence et la précision."
+  "hombre.caption": "L'homme moderne, défini par la présence et la précision.",
+  "renxo.title": "RENXO",
+  "renxo.subtitle": "Mode avec attitude",
+  "renxo.p1": "Prêt-à-porter",
+  "renxo.p2": "Accessoires",
+  "renxo.p3": "Éditions limitées",
+  "renxo.explore": "Découvrir"
 }

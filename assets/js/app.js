@@ -11,19 +11,18 @@ async function loadLang(lang){
 }
 if(select){const saved=localStorage.getItem('waposLang')||defaultLang; select.value=saved; loadLang(saved); select.addEventListener('change',e=>loadLang(e.target.value));}
 
-/* Splash (first visit, replayed once per week) */
+/* Splash (once per browser session — replays on every new visit, not on
+   internal page navigation within the same tab session) */
 (function(){
   const splash=document.querySelector('[data-splash]');
   if(!splash) return;
   const mark=splash.querySelector('.splash-mark');
   const SPLASH_KEY='waposSplashSeen';
-  const WEEK_MS=7*24*60*60*1000;
-  const lastSeen=Number(localStorage.getItem(SPLASH_KEY)||0);
-  const shouldShow=(Date.now()-lastSeen)>WEEK_MS;
+  const shouldShow=!sessionStorage.getItem(SPLASH_KEY);
 
   function reveal(){
     splash.classList.add('hide');
-    localStorage.setItem(SPLASH_KEY,String(Date.now()));
+    sessionStorage.setItem(SPLASH_KEY,'1');
   }
 
   if(!shouldShow){ splash.classList.add('hide'); return; }
@@ -91,11 +90,13 @@ if(contactForm){
     navLinks.classList.add('nav-open'); overlay.classList.add('show');
     toggle.classList.add('is-open'); toggle.setAttribute('aria-expanded','true');
     document.body.style.overflow='hidden';
+    if(select) select.classList.add('in-drawer');
   }
   function closeDrawer(){
     navLinks.classList.remove('nav-open'); overlay.classList.remove('show');
     toggle.classList.remove('is-open'); toggle.setAttribute('aria-expanded','false');
     document.body.style.overflow='';
+    if(select) select.classList.remove('in-drawer');
   }
   toggle.addEventListener('click',()=> navLinks.classList.contains('nav-open') ? closeDrawer() : openDrawer());
   overlay.addEventListener('click',closeDrawer);
@@ -174,6 +175,7 @@ document.addEventListener('click',function(e){
     navLinksEl.classList.remove('nav-open');
     document.querySelector('.nav-overlay')?.classList.remove('show');
     document.querySelector('.menu-toggle')?.classList.remove('is-open');
+    document.querySelector('[data-language-select]')?.classList.remove('in-drawer');
     document.body.style.overflow='';
   }
   const href=a.getAttribute('href')||'';
