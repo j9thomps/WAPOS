@@ -270,7 +270,7 @@ a:focus-visible,button:focus-visible,.lang-select:focus-visible,.menu-toggle:foc
   text-align:center;letter-spacing:.2em;font-size:10px;text-transform:uppercase;
   color:rgba(169,152,120,.7);}
 
-/* ————— Splash (first visit, replayed weekly) ————— */
+/* ————— Splash (once per browser session) ————— */
 .splash{position:fixed;z-index:100;inset:0;background:#060504;display:grid;
   place-items:center;cursor:pointer;
   transition:opacity .35s var(--ease),visibility .35s;}
